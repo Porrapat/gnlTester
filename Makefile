@@ -5,14 +5,15 @@ UTILS					= utils/sigsegv.cpp utils/color.cpp utils/check.cpp utils/gnl.cpp util
 TESTS_PATH				= tests/
 SHELL					= bash
 
+GET_NEXT_LINE_PATH		= ../
 
-MANDATORY_HEADER		= ../get_next_line.h
-MANDATORY_FILES			= ../get_next_line.c ../get_next_line_utils.c
-MANDATORY_OBJS			= $(MANDATORY_FILES:../%.c=%.o)
+MANDATORY_HEADER		= $(GET_NEXT_LINE_PATH)/get_next_line.h
+MANDATORY_FILES			= $(GET_NEXT_LINE_PATH)/get_next_line.c $(GET_NEXT_LINE_PATH)/get_next_line_utils.c
+MANDATORY_OBJS			= $(MANDATORY_FILES:$(GET_NEXT_LINE_PATH)/%.c=%.o)
 
-BONUS_HEADER			= ../get_next_line_bonus.h
-BONUS_FILES				= ../get_next_line_bonus.c ../get_next_line_utils_bonus.c
-BONUS_OBJS				= $(BONUS_FILES:../%.c=%.o)
+BONUS_HEADER			= $(GET_NEXT_LINE_PATH)/get_next_line_bonus.h
+BONUS_FILES				= $(GET_NEXT_LINE_PATH)/get_next_line_bonus.c $(GET_NEXT_LINE_PATH)/get_next_line_utils_bonus.c
+BONUS_OBJS				= $(BONUS_FILES:$(GET_NEXT_LINE_PATH)/%.c=%.o)
 
 MANDATORY				= mandatory
 1MANDATORY				= $(addprefix 1, $(MANDATORY))
@@ -30,7 +31,7 @@ BONUS					= bonus
 10MBONUS				= $(addprefix 10M, $(BONUS))
 
 CFLAGS					= -g3 -Wall -Wextra -Werror
-CPPFLAGS				= -g3 -ldl -std=c++11 -I utils/ -I.. -Wno-everything
+CPPFLAGS				= -g3 -ldl -std=c++11 -I utils/ -I$(GET_NEXT_LINE_PATH) -Wno-everything
 
 UNAME = $(shell uname -s)
 ifeq ($(UNAME), Linux)
